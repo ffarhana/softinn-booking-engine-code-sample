@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Softinn Booking Engine Code Sample - Calendar</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/fontawesome.min.css">
+
+    <!-- Javascripts -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Calendar Widget</h1>
+                <h2>Softinn Booking Engine Code Sample</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Demo #1: Inline Widget</h3>
+
+                <div id="softinn-calendar-widget-inline" class="row">
+                    <div class="col-lg-12">
+                        <form class="form-inline">
+                            <input id="softinn-calendar-datepicker-input-startdate" type="text" class="form-control">
+                            <input id="softinn-calendar-datepicker-input-enddate" type="text" class="form-control">
+                            <a id="softinn-calendar-inline" class="btn btn-success">Check Availability</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#softinn-calendar-datepicker-input-startdate').datepicker({
+                format: "yyyy-M-dd",
+            });
+            $('#softinn-calendar-datepicker-input-enddate').datepicker({
+                format: "yyyy-M-dd",
+            });
+            $('#softinn-calendar-inline').click(function () {
+                // Update your hotel ID here.
+                var hotelId = 8;
+                var startDate = $('#softinn-calendar-datepicker-input-startdate').val();
+                var endDate = $('#softinn-calendar-datepicker-input-enddate').val();
+
+                console.log(startDate);
+                console.log(endDate);
+
+                window.location.replace(`https://booking.mysoftinn.com/BookHotelRoom/Web?hotelId=${hotelId}&startDate=${startDate}&endDate=${endDate}`);
+            });
+        });
+    </script>
+</body>
+</html>
