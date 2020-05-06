@@ -32,8 +32,16 @@
                 <div id="softinn-calendar-widget-inline" class="row">
                     <div class="col-lg-12">
                         <form class="form-inline">
-                            <input id="softinn-calendar-datepicker-input-startdate" type="text" class="form-control">
-                            <input id="softinn-calendar-datepicker-input-enddate" type="text" class="form-control">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fas fa-calendar-alt"></i></span>
+                                <input id="softinn-calendar-datepicker-input-startdate" type="text" class="form-control">
+                            </div>
+                            
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fas fa-calendar-alt"></i></span>
+                                <input id="softinn-calendar-datepicker-input-enddate" type="text" class="form-control">
+                            </div>
+                            
                             <a id="softinn-calendar-inline" class="btn btn-success">Check Availability</a>
                         </form>
                     </div>
@@ -53,13 +61,10 @@
             $('#softinn-calendar-inline').click(function () {
                 // Update your hotel ID here.
                 var hotelId = 8;
+
                 var startDate = $('#softinn-calendar-datepicker-input-startdate').val();
                 var endDate = $('#softinn-calendar-datepicker-input-enddate').val();
-
-                console.log(startDate);
-                console.log(endDate);
-
-                window.location.replace(`https://booking.mysoftinn.com/BookHotelRoom/Web?hotelId=${hotelId}&startDate=${startDate}&endDate=${endDate}`);
+                window.location.href = `https://booking.mysoftinn.com/BookHotelRoom/Web?hotelId=${hotelId}&startDate=${startDate}&endDate=${endDate}`;
             });
         });
     </script>
