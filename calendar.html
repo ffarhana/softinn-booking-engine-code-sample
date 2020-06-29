@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -15,7 +15,14 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js"></script>
+	
+	<!--DateRangePickerJS-->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
+
 <body>
     <div class="container">
         <div class="row">
@@ -33,16 +40,10 @@
                     <div class="col-lg-12">
                         <form class="form-inline">
                             <div class="input-group">
+								<text>Select Date &nbsp</text>
                                 <span class="input-group-addon"><i class="fas fa-calendar-alt"></i></span>
-                                <input id="softinn-calendar-datepicker-input-startdate" type="text" class="form-control">
+                                <input name="daterange" type="text" placeholder="Select date" >
                             </div>
-                            
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fas fa-calendar-alt"></i></span>
-                                <input id="softinn-calendar-datepicker-input-enddate" type="text" class="form-control">
-                            </div>
-                            
-                            <a id="softinn-calendar-inline" class="btn btn-success">Check Availability</a>
                         </form>
                     </div>
                 </div>
@@ -50,23 +51,20 @@
         </div>
     </div>
 
-    <script type="text/javascript">
-        $(function () {
-            $('#softinn-calendar-datepicker-input-startdate').datepicker({
-                format: "yyyy-M-dd",
-            });
-            $('#softinn-calendar-datepicker-input-enddate').datepicker({
-                format: "yyyy-M-dd",
-            });
-            $('#softinn-calendar-inline').click(function () {
-                // Update your hotel ID here.
-                var hotelId = 8;
+    <script>
+$(function() {
+  $('input[name="daterange"]').daterangepicker({
+  minDate: moment() <!--Disable all previous date-->
+  },
+  function(start, end, label) {
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+	var hotelId = 8;
+    var startDate1 = moment(start).format('YYYY-MM-DD');
+    var endDate1 = moment(end).format('YYYY-MM-DD');
+	window.location.href = `https://booking.mysoftinn.com/BookHotelRoom/Web?hotelId=${hotelId}&startDate=${startDate1}&endDate=${endDate1}`;
+  });
 
-                var startDate = $('#softinn-calendar-datepicker-input-startdate').val();
-                var endDate = $('#softinn-calendar-datepicker-input-enddate').val();
-                window.location.href = `https://booking.mysoftinn.com/BookHotelRoom/Web?hotelId=${hotelId}&startDate=${startDate}&endDate=${endDate}`;
-            });
-        });
-    </script>
+});
+</script>
 </body>
 </html>
