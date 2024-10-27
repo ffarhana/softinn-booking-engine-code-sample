@@ -1,29 +1,52 @@
 ﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Softinn Booking Engine Code Sample - Calendar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Booking Engine UI</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/fontawesome.min.css">
-
-    <!-- Javascripts -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js"></script>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>Softinn Booking Engine Code Samples</h1>
-                <ul>
-                    <li><a href="~/calendar.html">Calendar Widget - Horizontal Inline</a></li>
-                </ul>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- Hero Section -->
+    <section class="hero-section relative h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://via.placeholder.com/1600x800');">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="relative z-10 text-center text-white px-4">
+            <h1 class="text-5xl font-bold mb-4">Welcome to Softinn Booking Engine</h1>
+            <p class="text-xl mb-6">Explore our booking engine samples for seamless integration and customization.</p>
+            <a href="#samples" class="btn btn-primary btn-lg transition-transform transform hover:scale-105">View Samples</a>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <div class="container my-16 mx-auto text-center" id="samples">
+        <h2 class="text-3xl font-semibold text-blue-600 mb-4">Booking Engine Code Samples</h2>
+        <p class="text-gray-600 mb-8">Discover our booking tools to enhance your site's functionality.</p>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <a href="/calendar.html" class="flex items-center space-x-4 text-blue-600 hover:text-blue-800">
+                    <i class="fas fa-calendar-alt fa-2x"></i>
+                    <span class="text-xl font-medium">Calendar Widget - Horizontal Inline</span>
+                </a>
             </div>
+            <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                <a href="/registration.html" class="flex items-center space-x-4 text-blue-600 hover:text-blue-800">
+                    <i class="fas fa-calendar-check fa-2x"></i>
+                    <span class="text-xl font-medium">Booking Form Example</span>
+                </a>
+            </div>
+            <!-- Additional Cards Can Be Added Here -->
         </div>
     </div>
+
+    <!-- Bootstrap and FontAwesome JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 </body>
 </html>

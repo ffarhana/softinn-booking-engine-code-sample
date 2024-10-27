@@ -1,70 +1,97 @@
 <!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Softinn Booking Engine Code Sample - Calendar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Softinn Booking Engine - Interactive Calendar</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/fontawesome.min.css">
-
-    <!-- Javascripts -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/fontawesome.min.js"></script>
-	
-	<!--DateRangePickerJS-->
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- DateRangePicker CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
+    <!-- FullCalendar CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>Calendar Widget</h1>
-                <h2>Softinn Booking Engine Code Sample</h2>
+<body class="bg-gray-100 text-gray-800 font-sans">
+    <!-- Main Container -->
+    <div class="container my-10 p-6 mx-auto bg-white shadow-lg rounded-lg">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-blue-600">Softinn Interactive Calendar</h1>
+            <p class="text-lg text-gray-600">Select your dates to begin your booking experience</p>
+        </div>
+
+        <!-- Inline Date Range Picker -->
+        <div class="max-w-md mx-auto mb-8">
+            <h3 class="text-2xl font-semibold text-blue-500 mb-4">Date Range Picker</h3>
+            <div class="flex items-center bg-gray-50 p-4 rounded-md shadow-md">
+                <span class="text-gray-500 mr-2"><i class="fas fa-calendar-alt fa-lg"></i></span>
+                <input name="daterange" type="text" class="form-control flex-grow" placeholder="Select date range">
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-12">
-                <h3>Demo #1: Inline Widget</h3>
-
-                <div id="softinn-calendar-widget-inline" class="row">
-                    <div class="col-lg-12">
-                        <form class="form-inline">
-                            <div class="input-group">
-								<text>Select Date &nbsp</text>
-                                <span class="input-group-addon"><i class="fas fa-calendar-alt"></i></span>
-                                <input name="daterange" type="text" placeholder="Select date" >
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        <!-- Full Calendar Component -->
+        <div class="max-w-4xl mx-auto mb-8">
+            <h3 class="text-2xl font-semibold text-blue-500 mb-4">Interactive Calendar</h3>
+            <div id="fullCalendar" class="bg-gray-100 p-4 rounded-lg shadow-md"></div>
         </div>
     </div>
 
+    <!-- jQuery, Bootstrap JS, Moment.js, DateRangePicker, and FullCalendar Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    
     <script>
-$(function() {
-  $('input[name="daterange"]').daterangepicker({
-  minDate: moment() <!--Disable all previous date-->
-  },
-  function(start, end, label) {
-    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-	var hotelId = 8;
-    var startDate1 = moment(start).format('YYYY-MM-DD');
-    var endDate1 = moment(end).format('YYYY-MM-DD');
-	window.location.href = `https://booking.mysoftinn.com/BookHotelRoom/Web?hotelId=${hotelId}&startDate=${startDate1}&endDate=${endDate1}`;
-  });
+        $(document).ready(function() {
+            // Initialize DateRangePicker
+            $('input[name="daterange"]').daterangepicker({
+                minDate: moment(),
+                locale: { format: 'YYYY-MM-DD' },
+                opens: 'center',
+            }, function(start, end) {
+                const hotelId = 8;
+                const startDate = start.format('YYYY-MM-DD');
+                const endDate = end.format('YYYY-MM-DD');
+                console.log(`Date range selected: ${startDate} to ${endDate}`);
+                window.location.href = `https://booking.mysoftinn.com/BookHotelRoom/Web?hotelId=${hotelId}&startDate=${startDate}&endDate=${endDate}`;
+            });
 
-});
-</script>
+            // Initialize FullCalendar
+            const calendarEl = document.getElementById('fullCalendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                selectable: true,
+                editable: true,
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                dateClick: function(info) {
+                    alert('Selected date: ' + info.dateStr);
+                    info.dayEl.style.backgroundColor = '#8ecae6';  // Highlight selected date
+                },
+                select: function(info) {
+                    const start = info.startStr;
+                    const end = info.endStr;
+                    console.log(`Selected date range: ${start} to ${end}`);
+                    alert(`Selected range: ${start} to ${end}`);
+                },
+                events: [
+                    // Example events
+                    { title: 'Booked', start: '2024-11-01', end: '2024-11-02', color: '#ffb703' },
+                    { title: 'Available', start: '2024-11-03', end: '2024-11-05', color: '#8ecae6' }
+                ]
+            });
+            calendar.render();
+        });
+    </script>
 </body>
 </html>
